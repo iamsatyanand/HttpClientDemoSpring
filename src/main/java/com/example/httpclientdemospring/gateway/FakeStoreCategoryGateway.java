@@ -3,6 +3,7 @@ package com.example.httpclientdemospring.gateway;
 import com.example.httpclientdemospring.dto.CategoryDTO;
 import com.example.httpclientdemospring.dto.FakeStoreCategoryResponseDTO;
 import com.example.httpclientdemospring.gateway.api.FakeStoreCategoryApi;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -10,7 +11,7 @@ import retrofit2.Response;
 import java.io.IOException;
 import java.util.List;
 
-@Service
+@Component
 public class FakeStoreCategoryGateway implements ICategoryGateway {
 
     private final FakeStoreCategoryApi fakeStoreCategoryApi;
