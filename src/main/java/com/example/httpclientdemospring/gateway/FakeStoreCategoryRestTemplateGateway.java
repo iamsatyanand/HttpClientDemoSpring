@@ -2,6 +2,7 @@ package com.example.httpclientdemospring.gateway;
 
 import com.example.httpclientdemospring.dto.CategoryDTO;
 import com.example.httpclientdemospring.dto.FakeStoreCategoryResponseDTO;
+import com.example.httpclientdemospring.mapper.GetAllCategoriesMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
@@ -28,10 +29,6 @@ public class FakeStoreCategoryRestTemplateGateway implements ICategoryGateway{
         if(response == null){
             throw new IOException("No content found");
         }
-        return response.getCategories().stream()
-                .map(category -> CategoryDTO.builder()
-                        .name(category)
-                        .build())
-                .toList();
+        return GetAllCategoriesMapper.toCategoryDTO(response);
     }
 }

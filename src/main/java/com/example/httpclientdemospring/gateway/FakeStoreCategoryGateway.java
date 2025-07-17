@@ -3,6 +3,7 @@ package com.example.httpclientdemospring.gateway;
 import com.example.httpclientdemospring.dto.CategoryDTO;
 import com.example.httpclientdemospring.dto.FakeStoreCategoryResponseDTO;
 import com.example.httpclientdemospring.gateway.api.FakeStoreCategoryApi;
+import com.example.httpclientdemospring.mapper.GetAllCategoriesMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import retrofit2.Call;
@@ -32,11 +33,7 @@ public class FakeStoreCategoryGateway implements ICategoryGateway {
         }
 
         // 3. Map the response to a list of CategoryDTO objects
-        return response.getCategories().stream()
-                .map(category -> CategoryDTO.builder()
-                        .name(category)
-                        .build())
-                .toList();
+        return GetAllCategoriesMapper.toCategoryDTO(response);
 
 //        Call<FakeStoreCategoryResponseDTO> retrofitCall = fakeStoreCategoryApi.getAllCategories();
 //
